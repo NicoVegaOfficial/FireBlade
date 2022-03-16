@@ -17,7 +17,7 @@ namespace BlockChain
             var genBlock = new block
             {
                 index = 0,
-                prevHash = "5a51818c86168c73ad4333f8dc38a739bbe7f31b68506d5756f5bec7b4a96d4b",
+                prevHash = "891e2f58bc689b757413684ad49e53b4cd967d245c2594586548bffe20f48324a6d95634a45afde174a2e297bd20807a5d2e96d7724760ea2fb96220ac3b270f",
                 data = "Datos"
             };
             var options = new JsonSerializerOptions { WriteIndented = true };
@@ -25,12 +25,38 @@ namespace BlockChain
             Console.WriteLine(txt);
         }
     }
+    public class newBlock
+    {
+        public void nextBlock()
+        {
+
+        }
+    }
+    public class calcHash
+    {
+        public string sha512(string input)
+        {
+            var bytes = System.Text.Encoding.UTF8.GetBytes(input);
+            using (var hash = System.Security.Cryptography.SHA512.Create())
+            {
+                var hashedInputBytes = hash.ComputeHash(bytes);
+                var hashedInputStringBuilder = new System.Text.StringBuilder(128);
+                foreach (var b in hashedInputBytes)
+                {
+                    hashedInputStringBuilder.Append(b.ToString("X2"));
+                }
+                return hashedInputStringBuilder.ToString();
+            }
+        }
+    }
     public class Program
     {
         static void Main(string[] args)
         {
             genesisBlock nBlock = new genesisBlock();
-            nBlock.iniciar();
+            calcHash nhash = new calcHash();
+            Console.WriteLine(nhash.sha512("el dinero es el sistema operativo del mundo"));
+            //nBlock.iniciar();
         }
 
     }
