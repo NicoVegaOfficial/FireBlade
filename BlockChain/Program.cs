@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Security.Cryptography;
 namespace BlockChain
@@ -13,18 +14,27 @@ namespace BlockChain
     }
     public class genesisBlock
     {
-        public void iniciar()
+        public string iniciar()
         {
-            var genBlock = new block
+            block genBlock = new block
             {
                 index = 0,
                 prevHash = "891e2f58bc689b757413684ad49e53b4cd967d245c2594586548bffe20f48324a6d95634a45afde174a2e297bd20807a5d2e96d7724760ea2fb96220ac3b270f",
                 Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
                 data = "Datos"
             };
-            var options = new JsonSerializerOptions { WriteIndented = true };
+            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
             string txt = JsonSerializer.Serialize(genBlock, options);
-            Console.WriteLine(txt);
+            return txt;
+        }
+    }
+
+    public class currency
+    {
+        public long coins(int i)
+        {
+            long serie = 0;
+            return serie;
         }
     }
     public class newBlock
@@ -57,7 +67,9 @@ namespace BlockChain
         {
             genesisBlock nBlock = new genesisBlock();
             calcHash nhash = new calcHash();
-            nBlock.iniciar();
+            //Console.WriteLine(nBlock.iniciar());
+            //Console.WriteLine(nhash.sha512(nBlock.iniciar()));
+            
         }
     }
 }
