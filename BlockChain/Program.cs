@@ -3,8 +3,53 @@ using System.Text.Json;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Security.Cryptography;
+using System.IO;
+using System.Xml.Serialization;
+using System.Text;
+
 namespace BlockChain
 {
+    public class rsaEncryption
+    {
+        private static RSACryptoServiceProvider csp = new RSACryptoServiceProvider(2048);
+        private RSAParameters privateKey;
+        private RSAParameters publicKey;
+        public rsaEncryption()
+        {
+            privateKey = csp.ExportParameters(true);
+            publicKey = csp.ExportParameters(false);
+        }
+        public string getPublicKey()
+        {
+            var sw = new StringWriter();
+            var xs = new XmlSerializer(typeof(RSAParameters));
+            xs.Serialize(sw, publicKey);
+            return sw.ToString();
+        }
+
+        public string getPrivateKey()
+        {
+            var sw = new StringWriter();
+            var xs = new XmlSerializer(typeof(RSAParameters));
+            xs.Serialize(sw, privateKey);
+            return sw.ToString();
+        }
+        public string encrypt(string txt)
+        {
+            csp = new RSACryptoServiceProvider();
+            csp.ImportParameters(publicKey);
+            var data = Encoding.Unicode.GetBytes(txt);
+            var cypher = csp.Encrypt(data, false);
+            return Convert.ToBase64String(cypher);
+        }
+        public string Decrypt(string crypto)
+        {
+            var dataBytes = Convert.FromBase64String(crypto);
+            csp.ImportParameters(privateKey);
+            var txt = csp.Decrypt(dataBytes, false);
+            return Encoding.Unicode.GetString(txt);
+        }
+    }
     public class block
     {
         public int index { get; set; }
@@ -19,7 +64,7 @@ namespace BlockChain
             block genBlock = new block
             {
                 index = 0,
-                prevHash = "891e2f58bc689b757413684ad49e53b4cd967d245c2594586548bffe20f48324a6d95634a45afde174a2e297bd20807a5d2e96d7724760ea2fb96220ac3b270f",
+                prevHash = "a6325ed86cc4af78beeb4b2ca801ea948a627e12d406445018f3c95a57370232f7607bf2946eafdba53443e5142aa40ea1ec1ccdcda5002441104dff685acb23", //nvCoin
                 Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
                 data = "Datos"
             };
@@ -57,9 +102,17 @@ namespace BlockChain
                 {
                     hashedInputStringBuilder.Append(b.ToString("X2"));
                 }
-                return hashedInputStringBuilder.ToString();
+                return hashedInputStringBuilder.ToString().ToLower();
             }
         }
+    }
+    public class transactions
+    {
+        public string add(string x)
+        {
+            return x;
+        }
+
     }
     public class Program
     {
@@ -67,9 +120,9 @@ namespace BlockChain
         {
             genesisBlock nBlock = new genesisBlock();
             calcHash nhash = new calcHash();
-            //Console.WriteLine(nBlock.iniciar());
-            //Console.WriteLine(nhash.sha512(nBlock.iniciar()));
-            
+            rsaEncryption rsa = new rsaEncryption();
+            Console.WriteLine(nBlock.iniciar());
+            Console.WriteLine(nhash.sha512(nBlock.iniciar()));
         }
     }
 }

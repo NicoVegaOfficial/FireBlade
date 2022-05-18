@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Nico\\.nuget\\packages\\": {}
+    "C:\\Users\\nico\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nico\\Desktop\\BlockChain\\BlockChain\\BlockChain.csproj",
+      "projectUniqueName": "C:\\Users\\nico\\Desktop\\proyectos\\blockchain\\BlockChain\\BlockChain.csproj",
       "projectName": "BlockChain",
-      "projectPath": "C:\\Users\\Nico\\Desktop\\BlockChain\\BlockChain\\BlockChain.csproj",
-      "packagesPath": "C:\\Users\\Nico\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nico\\Desktop\\BlockChain\\BlockChain\\obj\\",
+      "projectPath": "C:\\Users\\nico\\Desktop\\proyectos\\blockchain\\BlockChain\\BlockChain.csproj",
+      "packagesPath": "C:\\Users\\nico\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nico\\Desktop\\proyectos\\blockchain\\BlockChain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Nico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nico\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
