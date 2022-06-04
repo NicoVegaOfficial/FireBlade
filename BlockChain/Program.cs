@@ -57,16 +57,17 @@ namespace BlockChain
         public long Timestamp { get; set; }
         public string data { get; set; }
     }
-    public class genesisBlock
+    public class genesisBlock : block
     {
         public string iniciar()
         {
+            transactions nvCoin = new transactions();
             block genBlock = new block
             {
                 index = 0,
                 prevHash = "a6325ed86cc4af78beeb4b2ca801ea948a627e12d406445018f3c95a57370232f7607bf2946eafdba53443e5142aa40ea1ec1ccdcda5002441104dff685acb23", //nvCoin
                 Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
-                data = "Datos"
+                data = nvCoin.coinbase()
             };
             JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
             string txt = JsonSerializer.Serialize(genBlock, options);
@@ -74,14 +75,6 @@ namespace BlockChain
         }
     }
 
-    public class currency
-    {
-        public long coins(int i)
-        {
-            long serie = 0;
-            return serie;
-        }
-    }
     public class newBlock
     {
         public void nextBlock()
@@ -108,6 +101,14 @@ namespace BlockChain
     }
     public class transactions
     {
+        public string coinbase()
+        {
+            rsaEncryption rsa = new rsaEncryption();
+            int serie = 1;
+            string x = serie.ToString();
+            string z = rsa.encrypt(x);
+            return z;
+        }
         public string add(string x)
         {
             return x;
@@ -120,9 +121,14 @@ namespace BlockChain
         {
             genesisBlock nBlock = new genesisBlock();
             calcHash nhash = new calcHash();
-            rsaEncryption rsa = new rsaEncryption();
-            Console.WriteLine(nBlock.iniciar());
-            Console.WriteLine(nhash.sha512(nBlock.iniciar()));
+            leer();
+            static void leer()
+            {
+                genesisBlock nBlock = new genesisBlock();
+                string z = nBlock.iniciar();
+                genesisBlock? genesisBlock = JsonSerializer.Deserialize<genesisBlock>(z);
+                Console.WriteLine($"{genesisBlock?.index}");
+            }
         }
     }
 }
