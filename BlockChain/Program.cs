@@ -75,7 +75,7 @@ namespace BlockChain
         }
     }
 
-    public class newBlock
+    public class newBlock : block
     {
         public void nextBlock()
         {
@@ -119,13 +119,21 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
-            genesisBlock nBlock = new genesisBlock();
-            calcHash nhash = new calcHash();
-            leer();
+            startBlockchain();
+            static void startBlockchain()
+            {
+                genesisBlock gBlock = new genesisBlock();
+                Console.WriteLine(gBlock.iniciar());
+            }
+            static void continueBlockchain()
+            {
+                newBlock nBlock = new newBlock();
+
+            }
             static void leer()
             {
-                genesisBlock nBlock = new genesisBlock();
-                string z = nBlock.iniciar();
+                genesisBlock gBlock = new genesisBlock();
+                string z = gBlock.iniciar();
                 genesisBlock? genesisBlock = JsonSerializer.Deserialize<genesisBlock>(z);
                 Console.WriteLine($"{genesisBlock?.index}");
             }
