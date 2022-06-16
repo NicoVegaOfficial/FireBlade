@@ -9,6 +9,10 @@ using System.Text;
 
 namespace BlockChain
 {
+    public class lastBlock
+    {
+        public static string data;
+    }
     public class rsaEncryption
     {
         private static RSACryptoServiceProvider csp = new RSACryptoServiceProvider(2048);
@@ -56,30 +60,57 @@ namespace BlockChain
         public string prevHash { get; set; }
         public long Timestamp { get; set; }
         public string data { get; set; }
+        public int nonce { get; set; }
     }
     public class genesisBlock : block
     {
         public string iniciar()
         {
-            transactions nvCoin = new transactions();
+            transactions tx = new transactions();
+            int id = 0;
+            string phash = "a6325ed86cc4af78beeb4b2ca801ea948a627e12d406445018f3c95a57370232f7607bf2946eafdba53443e5142aa40ea1ec1ccdcda5002441104dff685acb23"; //nvCoin
+            long tm = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string dt = tx.add();
+
             block genBlock = new block
             {
-                index = 0,
-                prevHash = "a6325ed86cc4af78beeb4b2ca801ea948a627e12d406445018f3c95a57370232f7607bf2946eafdba53443e5142aa40ea1ec1ccdcda5002441104dff685acb23", //nvCoin
-                Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
-                data = nvCoin.coinbase()
+                index = id,
+                prevHash = phash,
+                Timestamp = tm,
+                data = dt
             };
-            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
-            string txt = JsonSerializer.Serialize(genBlock, options);
-            return txt;
+            JsonSerializerOptions op = new JsonSerializerOptions { WriteIndented = true };
+            string x = JsonSerializer.Serialize(genBlock, op);
+            return x;
         }
     }
 
     public class newBlock : block
     {
-        public void nextBlock()
+        public string nextBlock(string i)
         {
+            transactions tx = new transactions();
+            int id = 0;
+            string phash = i;
+            long tm = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string dt = tx.add();
 
+            block genBlock = new block
+            {
+                index = id,
+                prevHash = phash,
+                Timestamp = tm,
+                data = dt
+            };
+            JsonSerializerOptions op = new JsonSerializerOptions { WriteIndented = true };
+            string x = JsonSerializer.Serialize(genBlock, op);
+            return x;
+        }
+        private static string getHash(string i)
+        {
+            calcHash ch = new calcHash();
+            string x = ch.sha512(i);
+            return x;
         }
     }
     public class calcHash
@@ -101,17 +132,13 @@ namespace BlockChain
     }
     public class transactions
     {
-        public string coinbase()
+        public string add()
         {
             rsaEncryption rsa = new rsaEncryption();
-            int serie = 1;
-            string x = serie.ToString();
+            int saldo = 100;
+            string x = saldo.ToString();
             string z = rsa.encrypt(x);
             return z;
-        }
-        public string add(string x)
-        {
-            return x;
         }
 
     }
@@ -119,24 +146,39 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
-            startBlockchain();
-            static void startBlockchain()
-            {
-                genesisBlock gBlock = new genesisBlock();
-                Console.WriteLine(gBlock.iniciar());
-            }
-            static void continueBlockchain()
-            {
-                newBlock nBlock = new newBlock();
+            Console.WriteLine(startBlockchain());
 
-            }
-            static void leer()
-            {
-                genesisBlock gBlock = new genesisBlock();
-                string z = gBlock.iniciar();
-                genesisBlock? genesisBlock = JsonSerializer.Deserialize<genesisBlock>(z);
-                Console.WriteLine($"{genesisBlock?.index}");
-            }
+
+        }
+        static void continueBlockchain()
+        {
+            calcHash hsh = new calcHash();
+            newBlock nbl = new newBlock();
+            string x = startBlockchain();
+            Console.WriteLine(x);
+            Console.WriteLine("==================");
+            string n = hsh.sha512(x);
+            string nn = nbl.nextBlock(n);
+            Console.WriteLine(nn);
+        }
+        static void leer()
+        {
+            genesisBlock gBlock = new genesisBlock();
+            string z = gBlock.iniciar();
+            genesisBlock genesisBlock = JsonSerializer.Deserialize<genesisBlock>(z);
+            Console.WriteLine(genesisBlock.index);
+        }
+        public static string startBlockchain()
+        {
+            genesisBlock gBlock = new genesisBlock();
+            string s = gBlock.iniciar();
+            return s;
+        }
+        static string cHash(string i)
+        {
+            calcHash sha = new calcHash();
+            string x = sha.sha512(i);
+            return x;
         }
     }
 }
