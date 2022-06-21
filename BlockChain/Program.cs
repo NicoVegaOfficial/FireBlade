@@ -8,8 +8,6 @@ namespace BlockChain
         static void Main(string[] args)
         {
             Console.WriteLine(startBlockchain());
-
-
         }
         static void continueBlockchain()
         {
