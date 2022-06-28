@@ -5,10 +5,9 @@ namespace BlockChain
 {
     public class Program
     {
-        static string x = null;
         static void Main(string[] args)
         {
-            for (int x = 0; x < 10; x++)
+            while (true)
             {
                 continueBlockchain();
             }
@@ -22,10 +21,10 @@ namespace BlockChain
         static void continueBlockchain()
         {
             newBlock nbl = new newBlock();
-            if (x == null)
+            if (lastBlock.block == null)
             {
-                x = startBlockchain();
-                Console.WriteLine(x);
+                lastBlock.block = startBlockchain();
+                Console.WriteLine(lastBlock.block);
             }
             else
             {
