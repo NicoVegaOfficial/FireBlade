@@ -7,13 +7,12 @@ namespace BlockChain
 {
     public class newBlock : block
     {
-        public string nextBlock(string i)
+        public string nextBlock()
         {
-            transactions tx = new transactions();
-            int id = 0;
-            string phash = i;
+            int id = idBlock();
+            string phash = prevHashBlock(lastBlock.block);
             long tm = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            string[] dt = tx.add();
+            string[] dt = datax();
 
             block genBlock = new block
             {
@@ -28,9 +27,25 @@ namespace BlockChain
                 WriteIndented = true
             };
             string x = JsonSerializer.Serialize(genBlock, op);
+            lastBlock.block = x;
             return x;
         }
-        private static string getHash(string i)
+        private int idBlock()
+        {
+            int x = lastBlock.index + 1;
+            lastBlock.index = x;
+            return x;
+    
+        }
+        private string[] datax()
+        {
+            string[] c;
+            transactions tx = new transactions();
+            status st = new status();
+            c = st.add("Segundo Bloque");
+            return c;
+        }
+        private static string prevHashBlock(string i)
         {
             calcHash ch = new calcHash();
             string x = ch.sha512(i);

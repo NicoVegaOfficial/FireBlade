@@ -9,9 +9,9 @@ namespace BlockChain
 {
     public class status
     {
-        public string[] add()
+        public string[] add(string s)
         {
-            string[] x = { "FireBlade, la red social de Nicolás Vega" };
+            string[] x = { s };
             return x;
         }
     }

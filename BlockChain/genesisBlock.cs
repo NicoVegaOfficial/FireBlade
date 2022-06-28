@@ -12,9 +12,9 @@ namespace BlockChain
             transactions tx = new transactions();
             status st = new status();
             int id = 0;
-            string phash = "a6325ed86cc4af78beeb4b2ca801ea948a627e12d406445018f3c95a57370232f7607bf2946eafdba53443e5142aa40ea1ec1ccdcda5002441104dff685acb23"; //nvCoin
+            string phash = "c971e770079bf27bd12ca854eb8076f96df76d3f8e2c2568f9fd3d78b0cd0842cfc3edd2eea0ac8914134cbd4335af450836d39be51ff7d224bc573d137a3ca0"; //NearCoin
             long tm = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            string[] dt = st.add();
+            string[] dt = datax();
 
             block genBlock = new block
             {
@@ -29,7 +29,17 @@ namespace BlockChain
                 WriteIndented = true
             };
             string x = JsonSerializer.Serialize(genBlock, op);
+            lastBlock.index = id;
+            lastBlock.block = x;
             return x;
+        }
+        private string[] datax()
+        {
+            string[] c;
+            transactions tx = new transactions();
+            status st = new status();
+            c = st.add("Primer bloque");
+            return c;
         }
     }
 }

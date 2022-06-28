@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nico\\Desktop\\proyectos\\FireBlade\\BlockChain\\BlockChain.csproj": {}
+    "C:\\Users\\nico\\Desktop\\FireBlade\\BlockChain\\BlockChain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nico\\Desktop\\proyectos\\FireBlade\\BlockChain\\BlockChain.csproj": {
+    "C:\\Users\\nico\\Desktop\\FireBlade\\BlockChain\\BlockChain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nico\\Desktop\\proyectos\\FireBlade\\BlockChain\\BlockChain.csproj",
+        "projectUniqueName": "C:\\Users\\nico\\Desktop\\FireBlade\\BlockChain\\BlockChain.csproj",
         "projectName": "BlockChain",
-        "projectPath": "C:\\Users\\nico\\Desktop\\proyectos\\FireBlade\\BlockChain\\BlockChain.csproj",
+        "projectPath": "C:\\Users\\nico\\Desktop\\FireBlade\\BlockChain\\BlockChain.csproj",
         "packagesPath": "C:\\Users\\nico\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nico\\Desktop\\proyectos\\FireBlade\\BlockChain\\obj\\",
+        "outputPath": "C:\\Users\\nico\\Desktop\\FireBlade\\BlockChain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nico\\AppData\\Roaming\\NuGet\\NuGet.Config",
