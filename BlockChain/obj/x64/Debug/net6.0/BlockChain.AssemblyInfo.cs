@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("BlockChain")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("FireBlade")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("BlockChain")]
-[assembly: System.Reflection.AssemblyTitleAttribute("BlockChain")]
+[assembly: System.Reflection.AssemblyProductAttribute("FireBlade")]
+[assembly: System.Reflection.AssemblyTitleAttribute("FireBlade")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

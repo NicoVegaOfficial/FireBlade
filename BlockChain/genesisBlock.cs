@@ -38,7 +38,7 @@ namespace BlockChain
             string[] c;
             transactions tx = new transactions();
             status st = new status();
-            c = st.add("Primer bloque");
+            c = st.add("nico", "hola mundo");
             return c;
         }
     }

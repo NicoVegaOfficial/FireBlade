@@ -37,12 +37,16 @@ namespace BlockChain
             return x;
     
         }
+        private void pow()
+        {
+            
+        }
         private string[] datax()
         {
             string[] c;
             transactions tx = new transactions();
             status st = new status();
-            c = st.add("Segundo Bloque");
+            c = st.add("nico", "hola mundo");
             return c;
         }
         private static string prevHashBlock(string i)

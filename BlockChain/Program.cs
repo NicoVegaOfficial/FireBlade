@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.Json;
 
 namespace BlockChain
 {
@@ -7,8 +6,10 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
+
             while (true)
             {
+
                 continueBlockchain();
             }
         }
@@ -32,18 +33,6 @@ namespace BlockChain
                 Console.WriteLine(nn);
             }
         }
-        static void leer()
-        {
-            genesisBlock gBlock = new genesisBlock();
-            string z = gBlock.iniciar();
-            genesisBlock genesisBlock = JsonSerializer.Deserialize<genesisBlock>(z);
-            Console.WriteLine(genesisBlock.index);
-        }
-        static string cHash(string i)
-        {
-            calcHash sha = new calcHash();
-            string x = sha.sha512(i);
-            return x;
-        }
+
     }
 }
