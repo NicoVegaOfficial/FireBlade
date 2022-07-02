@@ -6,30 +6,29 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
-
             while (true)
             {
-
-                continueBlockchain();
+                string s = Console.ReadLine();
+                continueBlockchain(s);
             }
         }
-        public static string startBlockchain()
+        private static string startBlockchain(string i)
         {
             genesisBlock gBlock = new genesisBlock();
-            string s = gBlock.iniciar();
+            string s = gBlock.iniciar(i);
             return s;
         }
-        static void continueBlockchain()
+        private static void continueBlockchain(string i)
         {
             newBlock nbl = new newBlock();
             if (lastBlock.block == null)
             {
-                lastBlock.block = startBlockchain();
+                lastBlock.block = startBlockchain(i);
                 Console.WriteLine(lastBlock.block);
             }
             else
             {
-                string nn = nbl.nextBlock();
+                string nn = nbl.nextBlock(i);
                 Console.WriteLine(nn);
             }
         }

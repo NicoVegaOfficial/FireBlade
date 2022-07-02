@@ -7,19 +7,15 @@ namespace BlockChain
 {
     public class newBlock : block
     {
-        public string nextBlock()
+        public string nextBlock(string i)
         {
-            int id = idBlock();
-            string phash = prevHashBlock(lastBlock.block);
-            long tm = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            string[] dt = datax();
-
             block genBlock = new block
             {
-                index = id,
-                prevHash = phash,
-                Timestamp = tm,
-                data = dt
+                index = idBlock(),
+                prevHash = prevHashBlock(lastBlock.block),
+                Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
+                data = datax(i),
+                nonce = 0
             };
             JsonSerializerOptions op = new JsonSerializerOptions
             {
@@ -27,6 +23,8 @@ namespace BlockChain
                 WriteIndented = true
             };
             string x = JsonSerializer.Serialize(genBlock, op);
+            calcHash c = new calcHash();
+            lastBlock.hash = c.sha512(x);
             lastBlock.block = x;
             return x;
         }
@@ -35,18 +33,15 @@ namespace BlockChain
             int x = lastBlock.index + 1;
             lastBlock.index = x;
             return x;
-    
+
         }
-        private void pow()
-        {
-            
-        }
-        private string[] datax()
+
+        private string[] datax(string i)
         {
             string[] c;
             transactions tx = new transactions();
             status st = new status();
-            c = st.add("nico", "hola mundo");
+            c = st.add("@nico", i);
             return c;
         }
         private static string prevHashBlock(string i)
@@ -55,6 +50,7 @@ namespace BlockChain
             string x = ch.sha512(i);
             return x;
         }
+
     }
 
 }

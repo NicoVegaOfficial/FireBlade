@@ -7,21 +7,15 @@ namespace BlockChain
 {
     public class genesisBlock : block
     {
-        public string iniciar()
+        public string iniciar(string i)
         {
-            transactions tx = new transactions();
-            status st = new status();
-            int id = 0;
-            string phash = "c971e770079bf27bd12ca854eb8076f96df76d3f8e2c2568f9fd3d78b0cd0842cfc3edd2eea0ac8914134cbd4335af450836d39be51ff7d224bc573d137a3ca0"; //NearCoin
-            long tm = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            string[] dt = datax();
-
             block genBlock = new block
             {
-                index = id,
-                prevHash = phash,
-                Timestamp = tm,
-                data = dt
+                index = 0,
+                prevHash = "a4abd4448c49562d828115d13a1fccea927f52b4d5459297f8b43e42da89238bc13626e43dcb38ddb082488927ec904fb42057443983e88585179d50551afe62",
+                Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
+                data = datax(i),
+                nonce = 0
             };
             JsonSerializerOptions op = new JsonSerializerOptions
             {
@@ -29,16 +23,16 @@ namespace BlockChain
                 WriteIndented = true
             };
             string x = JsonSerializer.Serialize(genBlock, op);
-            lastBlock.index = id;
+            lastBlock.index = 0;
             lastBlock.block = x;
             return x;
         }
-        private string[] datax()
+        private string[] datax(string i)
         {
             string[] c;
             transactions tx = new transactions();
             status st = new status();
-            c = st.add("nico", "hola mundo");
+            c = st.add("@nico", i);
             return c;
         }
     }
