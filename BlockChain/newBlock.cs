@@ -39,9 +39,8 @@ namespace BlockChain
         private string[] datax(string i)
         {
             string[] c;
-            transactions tx = new transactions();
             status st = new status();
-            c = st.add("@nico", i);
+            c = st.add("@System", i);
             return c;
         }
         private static string prevHashBlock(string i)

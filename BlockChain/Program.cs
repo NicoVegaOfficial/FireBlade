@@ -6,12 +6,14 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
+
             while (true)
             {
-                string s = Console.ReadLine();
-                continueBlockchain(s);
+                continueBlockchain("hello");
             }
+
         }
+
         private static string startBlockchain(string i)
         {
             genesisBlock gBlock = new genesisBlock();

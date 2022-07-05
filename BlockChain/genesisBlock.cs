@@ -30,7 +30,6 @@ namespace BlockChain
         private string[] datax(string i)
         {
             string[] c;
-            transactions tx = new transactions();
             status st = new status();
             c = st.add("@nico", i);
             return c;

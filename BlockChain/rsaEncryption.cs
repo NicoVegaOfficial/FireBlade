@@ -47,6 +47,10 @@ namespace BlockChain
             var txt = csp.Decrypt(dataBytes, false);
             return Encoding.Unicode.GetString(txt);
         }
+        public string sign(string input)
+        {
+            return input;
+        }
     }
 
 }
