@@ -6,17 +6,29 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
-            rsaEncryption r = new rsaEncryption();
-            sign s = new sign();
-            string txt = "hola";
-            string x = s.signData(txt);
-            string y = txt + "," + x;
-            for (int i = 0; i <= 10; i++)
-            {
-                continueBlockchain(y);
-            }
+            options();
         }
 
+        private static void options()
+        {
+            Console.WriteLine("choise a option");
+            Console.WriteLine("1: Add a User");
+            int op = int.Parse(Console.ReadLine());
+            if (op == 1)
+            {
+                addUser();
+            }
+        }
+        private static void addUser()
+        {
+            rsaEncryption r = new rsaEncryption();
+            accounts a = new accounts();
+            Console.WriteLine("Ingresa el nombre de tu cuenta");
+            string name = Console.ReadLine();
+            string pubKey = r.getPublicKey();
+            string x = a.add(name, pubKey);
+            continueBlockchain(x);
+        }
         private static string startBlockchain(string i)
         {
             genesisBlock gBlock = new genesisBlock();

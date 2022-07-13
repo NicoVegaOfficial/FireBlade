@@ -7,10 +7,20 @@ namespace BlockChain
 {
     public class accounts
     {
-        public string add(string name)
+        sign s = new sign();
+        public string add(string name, string pubKey)
         {
-            string x = name;
-            return name;
+            string x = name + "," + pubKey + "," + getTime();
+            return x;
+        }
+        public string verify()
+        {
+            return null;
+        }
+        private string getTime()
+        {
+            long x = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            return x.ToString();
         }
     }
 }
