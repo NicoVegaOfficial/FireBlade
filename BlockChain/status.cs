@@ -5,7 +5,7 @@ namespace BlockChain
     {
 
         public string[] add(string username, string txt)
-        {            
+        {
             string[] x = { username, txt, getTime() };
             return x;
         }

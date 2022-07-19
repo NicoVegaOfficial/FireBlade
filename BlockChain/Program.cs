@@ -6,17 +6,27 @@ namespace BlockChain
     {
         static void Main(string[] args)
         {
-            options();
+            while (true)
+            {
+                options();
+            }
         }
 
         private static void options()
         {
             Console.WriteLine("choise a option");
+            Console.WriteLine("======================");
             Console.WriteLine("1: Add a User");
+            Console.WriteLine("2: Exit");
             int op = int.Parse(Console.ReadLine());
             if (op == 1)
             {
                 addUser();
+            }
+            if (op == 2)
+            {
+
+                Environment.Exit(0);
             }
         }
         private static void addUser()
@@ -35,20 +45,25 @@ namespace BlockChain
             string s = gBlock.iniciar(i);
             return s;
         }
-        private static void continueBlockchain(string i)
+        private static string continueBlockchain(string i)
         {
+            saveToDisk sd = new saveToDisk();
             newBlock nbl = new newBlock();
             if (lastBlock.block == null)
             {
-                lastBlock.block = startBlockchain(i);
-                Console.WriteLine(lastBlock.block);
+                string nn = startBlockchain(i);
+                string file = "block" + lastBlock.index.ToString();
+                sd.save(file, nn);
+                return lastBlock.block;
+
             }
             else
             {
                 string nn = nbl.nextBlock(i);
-                Console.WriteLine(nn);
+                string file = "block" + lastBlock.index.ToString();
+                sd.save(file, nn);
+                return nn;
             }
         }
-
     }
 }

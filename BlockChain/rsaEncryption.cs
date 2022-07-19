@@ -19,16 +19,16 @@ namespace BlockChain
         }
         public string getPublicKey()
         {
-            var sw = new StringWriter();
-            var xs = new XmlSerializer(typeof(RSAParameters));
+            StringWriter sw = new StringWriter();
+            XmlSerializer xs = new XmlSerializer(typeof(RSAParameters));
             xs.Serialize(sw, publicKey);
             return sw.ToString();
         }
 
         public string getPrivateKey()
         {
-            var sw = new StringWriter();
-            var xs = new XmlSerializer(typeof(RSAParameters));
+            StringWriter sw = new StringWriter();
+            XmlSerializer xs = new XmlSerializer(typeof(RSAParameters));
             xs.Serialize(sw, privateKey);
             return sw.ToString();
         }

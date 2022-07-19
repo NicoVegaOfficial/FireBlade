@@ -48,7 +48,5 @@ namespace BlockChain
             string x = ch.sha512(i);
             return x;
         }
-
     }
-
 }

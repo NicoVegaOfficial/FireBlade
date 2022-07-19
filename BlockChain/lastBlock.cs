@@ -9,6 +9,5 @@
         public static int nonce;
         public static string hash;
         public static string block;
-        
     }
 }
