@@ -8,7 +8,7 @@ namespace BlockChain
     public class sign
     {
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-        private static RSAParameters key;
+        public static RSAParameters key;
         public sign()
         {
             key = rsa.ExportParameters(true);
@@ -43,7 +43,7 @@ namespace BlockChain
             {
                 RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
                 rsa.ImportParameters(Key);
-                return rsa.SignData(DataToSign, SHA256.Create());
+                return rsa.SignData(DataToSign, SHA512.Create());
 
             }
             catch (Exception e)
@@ -59,7 +59,7 @@ namespace BlockChain
                 RSACryptoServiceProvider RSAalg = new RSACryptoServiceProvider();
 
                 RSAalg.ImportParameters(Key);
-                return RSAalg.VerifyData(DataToVerify, SHA256.Create(), SignedData);
+                return RSAalg.VerifyData(DataToVerify, SHA512.Create(), SignedData);
             }
             catch (CryptographicException e)
             {

@@ -1,11 +1,20 @@
 ﻿using System;
-
 namespace BlockChain
 {
     public class Program
     {
         static void Main(string[] args)
-        {
+        {/*
+            sign s = new sign();
+            rsaEncryption r = new rsaEncryption();
+            string a = "Hola mundo";
+            string b = s.signData(a);
+            string c = s.getKey();
+            byte[] aa = new byte[a.Length];
+            byte[] bb = new byte[b.Length];
+            bool d = s.VerifySignedHash(aa, bb, sign.key);
+            Console.WriteLine(d);*/
+            //Console.WriteLine(sign.key.Q);
             while (true)
             {
                 options();
@@ -31,12 +40,10 @@ namespace BlockChain
         }
         private static void addUser()
         {
-            rsaEncryption r = new rsaEncryption();
             accounts a = new accounts();
             Console.WriteLine("Ingresa el nombre de tu cuenta");
             string name = Console.ReadLine();
-            string pubKey = r.getPublicKey();
-            string x = a.add(name, pubKey);
+            string x = a.add(name);
             continueBlockchain(x);
         }
         private static string startBlockchain(string i)

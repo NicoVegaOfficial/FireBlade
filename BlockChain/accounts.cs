@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
 
 namespace BlockChain
 {
     public class accounts
     {
-        sign s = new sign();
-        public string add(string name, string pubKey)
+        public string add(string name)
         {
+            sign s = new sign();
+            rsaEncryption r = new rsaEncryption();
+            string pubKey = r.getPublicKey();
             string x = name + "," + pubKey + "," + getTime();
             return x;
         }

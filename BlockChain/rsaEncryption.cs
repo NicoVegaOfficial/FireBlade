@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.IO;
-using System.Xml.Serialization;
 using System.Text;
 
 
@@ -15,22 +14,18 @@ namespace BlockChain
         public rsaEncryption()
         {
             privateKey = csp.ExportParameters(true);
-            publicKey = csp.ExportParameters(false);
+            publicKey = csp.ExportParameters(true);
         }
         public string getPublicKey()
         {
-            StringWriter sw = new StringWriter();
-            XmlSerializer xs = new XmlSerializer(typeof(RSAParameters));
-            xs.Serialize(sw, publicKey);
-            return sw.ToString();
+            string z = string.Join("", publicKey.Q);
+            return z;
         }
 
         public string getPrivateKey()
         {
-            StringWriter sw = new StringWriter();
-            XmlSerializer xs = new XmlSerializer(typeof(RSAParameters));
-            xs.Serialize(sw, privateKey);
-            return sw.ToString();
+            string z = string.Join("", privateKey.InverseQ);
+            return z;
         }
         public string encrypt(string txt)
         {
