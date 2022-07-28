@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using System.Xml.Serialization;
-using System.IO;
 namespace BlockChain
 {
     public class sign
@@ -31,10 +29,8 @@ namespace BlockChain
         }
         public string getKey()
         {
-            var sw = new StringWriter();
-            var xs = new XmlSerializer(typeof(RSAParameters));
-            xs.Serialize(sw, key);
-            return sw.ToString();
+            string x = string.Join("", key.Q);
+            return x;
         }
 
         private static byte[] HashAndSignBytes(byte[] DataToSign, RSAParameters Key)

@@ -3,10 +3,9 @@ namespace BlockChain
 {
     public class status
     {
-
-        public string[] add(string username, string txt)
+        public string[] add(string txt)
         {
-            string[] x = { username, txt, getTime() };
+            string[] x = { txt, getTime() };
             return x;
         }
         private string getTime()

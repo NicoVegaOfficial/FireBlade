@@ -39,7 +39,7 @@ namespace BlockChain
         {
             string[] c;
             status st = new status();
-            c = st.add("@System", i);
+            c = st.add(i);
             return c;
         }
         private static string prevHashBlock(string i)

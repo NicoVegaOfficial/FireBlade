@@ -31,7 +31,7 @@ namespace BlockChain
         {
             string[] c;
             status st = new status();
-            c = st.add("@nico", i);
+            c = st.add(i);
             return c;
         }
     }
