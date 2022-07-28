@@ -16,13 +16,15 @@ namespace BlockChain
         }
         public string getPublicKey()
         {
-            string z = string.Join("", publicKey.Q);
+            byte[] q = csp.ExportRSAPublicKey();
+            string z = string.Join("", q);
             return z;
         }
 
         public string getPrivateKey()
         {
-            string z = string.Join("", privateKey.InverseQ);
+            byte[] q = csp.ExportRSAPrivateKey();
+            string z = string.Join("", q);
             return z;
         }
         public string encrypt(string txt)
