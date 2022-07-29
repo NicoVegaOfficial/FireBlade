@@ -7,9 +7,10 @@ namespace BlockChain
         {
             Console.WriteLine("choise a option");
             Console.WriteLine("======================");
-            Console.WriteLine("1: Add a User");
+            Console.WriteLine("1: Add a user");
             Console.WriteLine("2: Send Payment");
-            Console.WriteLine("3: Exit");
+            Console.WriteLine("3: Add status");
+            Console.WriteLine("4: Exit");
             int op = int.Parse(Console.ReadLine());
             if (op == 1)
             {
@@ -21,9 +22,20 @@ namespace BlockChain
             }
             if (op == 3)
             {
+                addStatus();
+            }
+            if (op == 4)
+            {
 
                 Environment.Exit(0);
             }
+        }
+        public void addStatus()
+        {
+            status s = new status();
+            Console.WriteLine("Añade tu nuevo estado");
+            string txt = Console.ReadLine();
+            continueBlockchain(txt);
         }
         public void addUser()
         {
